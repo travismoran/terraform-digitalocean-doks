@@ -8,7 +8,7 @@ variable "worker_count" {
 }
 
 variable "worker_size" {
-  default = "s-2vcpu-4gb"
+  default = "s-4vcpu-8gb-amd"
 }
 
 variable "write_kubeconfig" {
