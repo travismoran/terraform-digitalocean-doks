@@ -13,5 +13,5 @@ variable "worker_size" {
 
 variable "write_kubeconfig" {
   type        = bool
-  default     = false
+  default     = true
 }
