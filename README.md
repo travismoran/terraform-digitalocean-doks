@@ -7,6 +7,44 @@ guide will also show you how to make changes to the underlying DOKS cluster in
 such a way that Kubernetes/Helm resources are recreated after the underlying
 cluster is replaced.
 
+# Prereqs
+```
+# Install Terraform on Ubuntu
+
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+    https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update
+sudo apt-get install terraform
+
+# Install DOCTL
+
+sudo snap install doctl
+sudo snap connect doctl:kube-config
+
+# Install Flux
+curl -s https://fluxcd.io/install.sh | sudo bash
+
+# Install Kubectl
+# AMD64
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# ARM64
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+
+kubectl version --client --output=yaml
+
+# Install Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+```
+
+
 You will need to set the following environment variables:
 
  - `DIGITALOCEAN_ACCESS_TOKEN`
