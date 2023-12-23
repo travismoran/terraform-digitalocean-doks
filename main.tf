@@ -33,10 +33,10 @@ module "doks-cluster" {
   worker_count       = var.worker_count
 }
 
-module "kubernetes-config" {
-  source           = "./kubernetes-config"
-  cluster_name     = module.doks-cluster.cluster_name
-  cluster_id       = module.doks-cluster.cluster_id
-
-  write_kubeconfig = var.write_kubeconfig
-}
+#module "kubernetes-config" {
+#  source           = "./kubernetes-config"
+#  cluster_name     = module.doks-cluster.cluster_name
+#  cluster_id       = module.doks-cluster.cluster_id
+#
+#  write_kubeconfig = var.write_kubeconfig
+#}

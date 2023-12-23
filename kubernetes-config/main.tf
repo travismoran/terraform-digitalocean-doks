@@ -121,6 +121,16 @@ resource "helm_release" "nginx_ingress" {
     name  = "service.annotations.service\\.beta\\.kubernetes\\.io/do-loadbalancer-name"
     value = format("%s-nginx-ingress", var.cluster_name)
   }
+  set {
+    name  = "service.annotations.service\\.beta\\.kubernetes\\.io/do-loadbalancer-hostname"
+    value = "dev.traviscloud.com"
+    type = "string"
+  }
+  set {
+    name  = "service.annotations.service\\.beta\\.kubernetes\\.io/do-loadbalancer-enable-proxy-protocol"
+    value = "true"
+    type = "string"
+  }
 }
 
 resource "kubernetes_ingress_v1" "test_ingress" {
