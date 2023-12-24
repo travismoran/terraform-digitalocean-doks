@@ -4,11 +4,12 @@ variable "cluster_version" {
 }
 
 variable "worker_count" {
-  default = 3
+  default = 1
 }
 
 variable "worker_size" {
-  default = "s-4vcpu-8gb-amd"
+  #default = "s-4vcpu-8gb-amd"
+  default = "s-8vcpu-32gb-amd"
 }
 
 variable "write_kubeconfig" {
